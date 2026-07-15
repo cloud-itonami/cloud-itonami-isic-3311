@@ -1,0 +1,73 @@
+{:itonami.blueprint/id "cloud-itonami-isic-3311"
+ :itonami.blueprint/name "Repair of Fabricated Metal Products"
+ :itonami.blueprint/isic-rev5 "3311"
+ :itonami.blueprint/domain :manufacturing/fabricated-metal-repair
+ :itonami.blueprint/license "AGPL-3.0-or-later"
+ :itonami.blueprint/social-impact [:worker-safety :repair-access :circular-economy-repair-over-replace]
+ :itonami.blueprint/governor :fabricated-metal-repair-governor
+ :itonami.blueprint/robotics false
+ :itonami.blueprint/required-technologies [:identity :forms :audit-ledger]
+ :itonami.blueprint/optional-technologies []
+ :itonami.blueprint/status :public-oss
+ :itonami.blueprint/maturity :implemented
+ :itonami.blueprint/implemented-slice
+ "`:fabricated-metal-repair-governor` is implemented end-to-end in
+ `src/fabricated_metal_repair` as a REPAIR-SHOP OPERATIONS COORDINATION
+ actor -- Repair Advisor (LLM proposal-only) ⊣ Repair Governor (closed-
+ op-allowlist / equipment-verification / legal-basis / unresolved-concern
+ hard-gates). ISIC 3311 covers repair of FABRICATED METAL PRODUCTS
+ specifically -- structural steel members/frames, storage tanks,
+ boilers/pressure vessels and metal furniture -- distinct from the more
+ specific/other repair classes 3312 (machinery and equipment), 3313
+ (electronic and optical equipment), 3314 (electrical equipment), 3315
+ (transport equipment) and the residual class 3319 (other equipment).
+ This actor deliberately holds NO repair-equipment/welding-tool control
+ authority and NO return-to-service sign-off authority (both are HARD,
+ permanent governor blocks, never overridable by human approval -- see
+ `fabricated-metal-repair.governor` ns docstring), the SAME
+ coordination-only, narrower-than-4211 shape `cloud-itonami-isic-3314`
+ (Repair of Electrical Equipment) and `cloud-itonami-isic-3319` (Repair of
+ Other Equipment) already established in this fleet. Every one of its
+ four proposal ops (`:log-repair-record` / `:schedule-repair-operation` /
+ `:flag-safety-concern` / `:order-supplies`) carries `:effect :propose`
+ ONLY -- the governor HARD-holds any proposal that doesn't
+ (`effect-not-propose-violations`), a structural invariant distinguishing
+ this actor from siblings that DO commit real-world actuation effects.
+
+ Like `cloud-itonami-isic-3314` and `cloud-itonami-isic-3319`, this
+ actor's `:schedule-repair-operation` MAY auto-commit at phase 3 when the
+ governor is completely clean -- equipment/work-order independently
+ verified, a per-jurisdiction pre-return-to-service weld-repair-
+ inspection legal basis on file, and no unresolved safety concern on
+ record. The schedule op itself is still only ever a proposed
+ diagnostic/repair/testing WINDOW, never a live-work authorization, a
+ repair-equipment/welding-tool control command, or a return-to-service
+ sign-off -- and this actor's own HARD checks (equipment-verification,
+ legal-basis-on-file citing the jurisdiction's own post-repair
+ inspection duty, no-unresolved-safety-concern) plus its forbidden-
+ action-class block on any `:return-to-service-sign-off?` marker already
+ gate the actual structural/pressure-integrity hazard surface
+ independently of phase. `:flag-safety-concern` is the ONLY permanent,
+ unconditional `high-stakes` member in `fabricated-metal-repair.governor`
+ -- see that ns docstring 'Actuation' section for the full rationale.
+
+ Per-jurisdiction (JPN/USA/DEU) post-repair (weld-repair on a
+ pressure-bearing/structural part) inspection-before-return-to-service
+ legal-basis catalog (`fabricated-metal-repair.facts`) with real official
+ sources -- all THREE seeded jurisdictions are honestly `:qualitative`
+ here (a procedural change-notification-plus-inspection /
+ pressure-test-or-NDE / qualified-inspector duty before a repaired
+ pressure vessel, boiler or structural-load-bearing member returns to
+ service, not a fixed numeric notice-lead-time count), the same
+ honest-coverage convention `installation.facts`/`demolition.facts`/
+ `construction.facts`/`electrical-equipment-repair.facts`/`other-
+ equipment-repair.facts` establish. This actor does not invent a numeric
+ lead-time count where none of its three researched jurisdictions'
+ fabricated-metal-product repair law gives one for the repair itself.
+ This build ships NO JVM-only interop anywhere in `src/` (no real
+ Resend/Twilio transports -- `fabricated-metal-repair.notify` ships only
+ the portable mock notifier + `Notifier` protocol seam) per this
+ workspace's cljs-first `.cljc` runtime-priority rule. `:flag-safety-
+ concern` ALWAYS escalates to a human, at every phase, unconditionally.
+ See `docs/` -- README `Actuation` section -- for the full governor-check
+ enumeration and the rationale for each hard/soft rule."}
