@@ -14,7 +14,7 @@
   governor holds if it tries.
 
   Coverage is reported HONESTLY (see `coverage`); this is a STARTING
-  catalog (JPN/USA/DEU), not a from-scratch survey of all ~194
+  catalog (JPN/USA/DEU/SWE), not a from-scratch survey of all ~194
   jurisdictions. Extending coverage is additive: add one map to `catalog`,
   cite a real source, done -- never invent a jurisdiction's requirements
   to make coverage look bigger.
@@ -22,7 +22,7 @@
   UNLIKE `installation.facts` (which found ONE `:quantitative`
   jurisdiction -- Japan's Industrial Safety and Health Act Article 88 --
   for an installation-notification PLAN filing), this catalog's research
-  found ZERO `:quantitative` jurisdictions among JPN/USA/DEU for the
+  found ZERO `:quantitative` jurisdictions among JPN/USA/DEU/SWE for the
   post-repair inspection-before-return-to-service duty itself: every
   seeded source is a PROCEDURAL requirement (notify/inspect a repaired
   structural or pressure-bearing part before it returns to service, with
@@ -33,9 +33,9 @@
                     inspector duty before a welded/structurally repaired
                     fabricated-metal item (tank, boiler, pressure vessel,
                     structural steel member) returns to service (JPN/USA/
-                    DEU below), with NO fixed jurisdiction-wide numeric
-                    lead-time this actor could independently verify at
-                    the time this catalog was built.
+                    DEU/SWE below), with NO fixed jurisdiction-wide
+                    numeric lead-time this actor could independently
+                    verify at the time this catalog was built.
                     `notification-lead-insufficient?` therefore always
                     returns `:qualitative` for a covered jurisdiction in
                     this catalog -- the Repair Governor's `legal-basis-
@@ -89,6 +89,49 @@
            use of work equipment by workers), which requires that workers
            carrying out repairs, modifications, maintenance or servicing
            of work equipment be specifically designated to do so.
+    SWE -- Arbetsmiljöverkets föreskrifter (AFS 2023:11) om
+           arbetsutrustning och personlig skyddsutrustning – säker
+           användning (i kraft sedan den 1 januari 2025, ändrad genom
+           AFS 2024:4; upphäver och ersätter AFS 2017:3 om användning
+           och kontroll av trycksatta anordningar -- this actor verified
+           AFS 2023:11 is the CURRENT instrument, not the repealed
+           AFS 2017:3 a naive search would surface), 9 kap. (Användning
+           av trycksatta anordningar) 40-42 §§ tillsammans med 10 kap.
+           (Kontroll av trycksatta anordningar) 7, 20 och 21 §§: 9 kap.
+           40 § kräver att en arbetsgivare som utför eller låter utföra
+           en väsentlig reparation eller ändring av en trycksatt
+           anordning i klass A eller B upprättar dokumentation enligt
+           41 §, som enligt 41 § punkterna 4-5 ska visa att 'en
+           oförstörande provning är utförd med godkänt resultat' och
+           att 'en tryckkontroll är utförd efter åtgärden' (a
+           non-destructive examination has been performed with an
+           approved/passing result, and a pressure test has been
+           carried out after the repair/alteration); 10 kap. 20 §
+           requires the employer to have a revisionskontroll (revision
+           inspection) carried out on the repaired/altered class A/B
+           device by an accredited kontrollorgan (inspection body
+           accredited under SS-EN ISO/IEC 17020 and Regulation (EC)
+           No 765/2008), which per 10 kap. 21 § checks whether the
+           device after the measure 'fortfarande är lämplig för sitt
+           ändamål' (is still fit for its purpose) and whether the
+           9 kap. 40-42 §§ documentation was met; 10 kap. 7 § forbids
+           the employer from pressurising ('trycksätta') a class A or
+           B device unless a kontrollorgan has, at a kontroll, assessed
+           that it meets this chapter's requirements -- i.e. a
+           repaired/altered pressure-bearing device may not be
+           returned to service until the accredited body's post-repair
+           revisionskontroll has passed --
+           https://www.av.se/globalassets/filer/publikationer/foreskrifter/konsoliderade-foreskrifter/arbetsutrustning-och-personlig-skyddsutrustning-saker-anvandning-afs2023-11-konsoliderad.pdf
+           (263-page consolidated PDF fetched and read in full for this
+           catalog entry; landing page
+           https://www.av.se/arbetsmiljoarbete-och-inspektioner/publikationer/foreskrifter/afs-202311/).
+           Like USA/DEU, and UNLIKE JPN's ボイラー変更届 filed with the
+           Labour Standards Inspection Office, Sweden's duty runs
+           through an accredited third-party inspection body rather
+           than a pre-repair filing with Arbetsmiljöverket itself --
+           this catalog does not force a notification-to-authority
+           element onto a jurisdiction whose verified source does not
+           have one.
 
   DEU is used as the EU-jurisdiction proxy, the SAME convention
   `installation.facts`/`demolition.facts`/`construction.facts`/
@@ -120,7 +163,14 @@
           :repair-safety-provenance "https://www.gesetze-im-internet.de/betrsichv_2015/anhang_2.html"
           :threshold-model :qualitative
           :notification-lead-days nil
-          :threshold-note "BetrSichV Anhang 2 Abschnitt 4 Nummer 4.2/5.7は圧力設備の構造的な溶接修繕後、再稼働前に検査（耐力試験又は非破壊検査）を義務付けるのみで、日本のボイラー及び圧力容器安全規則第41条・第42条のような固定日数の事前届出リードタイムはEU/ドイツの圧力設備関連規則では法定されていない -- ここで数値を創作しない。"}})
+          :threshold-note "BetrSichV Anhang 2 Abschnitt 4 Nummer 4.2/5.7は圧力設備の構造的な溶接修繕後、再稼働前に検査（耐力試験又は非破壊検査）を義務付けるのみで、日本のボイラー及び圧力容器安全規則第41条・第42条のような固定日数の事前届出リードタイムはEU/ドイツの圧力設備関連規則では法定されていない -- ここで数値を創作しない。"}
+   "SWE" {:name "Sweden"
+          :owner-authority "Arbetsmiljöverket (Swedish Work Environment Authority); kontroll performed by an accredited kontrollorgan (inspection body accredited by Swedac under Regulation (EC) No 765/2008 and SS-EN ISO/IEC 17020)"
+          :repair-safety-basis "Arbetsmiljöverkets föreskrifter (AFS 2023:11) om arbetsutrustning och personlig skyddsutrustning – säker användning (i kraft sedan den 1 januari 2025, ändrad genom AFS 2024:4; upphäver och ersätter AFS 2017:3 om användning och kontroll av trycksatta anordningar) 9 kap. 40–42 §§ (reparation eller ändring av trycksatta anordningar i klass A eller B) tillsammans med 10 kap. 7, 20 och 21 §§ (kontroll av trycksatta anordningar) -- 9 kap. 40 § kräver att en arbetsgivare som utför eller låter utföra en väsentlig reparation eller ändring av en trycksatt anordning i klass A eller B upprättar dokumentation enligt 41 §, som enligt 41 § punkterna 4–5 ska visa att 'en oförstörande provning är utförd med godkänt resultat' och att 'en tryckkontroll är utförd efter åtgärden' (a non-destructive examination has been performed with an approved/passing result, and a pressure test has been carried out after the repair/alteration); 10 kap. 20 § requires the employer to have a revisionskontroll (revision inspection) carried out on the repaired/altered class A/B device by an accredited kontrollorgan, which per 10 kap. 21 § checks whether the device after the measure 'fortfarande är lämplig för sitt ändamål' (is still fit for its purpose) and whether the documentation meets the 9 kap. 40–42 §§ requirements; 10 kap. 7 § forbids the employer from pressurising ('trycksätta') a class A or B device unless a kontrollorgan has, at a kontroll, assessed that it meets this chapter's requirements -- i.e. a repaired/altered pressure-bearing device may not be returned to service (pressurised) until the accredited inspection body's post-repair revisionskontroll has passed. Supersedes the previously current AFS 2017:3 om användning och kontroll av trycksatta anordningar, repealed by AFS 2023:11's transitional provisions p.1-2 effective 2025-01-01."
+          :repair-safety-provenance "https://www.av.se/globalassets/filer/publikationer/foreskrifter/konsoliderade-foreskrifter/arbetsutrustning-och-personlig-skyddsutrustning-saker-anvandning-afs2023-11-konsoliderad.pdf"
+          :threshold-model :qualitative
+          :notification-lead-days nil
+          :threshold-note "AFS 2023:11 9 kap. 40–42 §§ and 10 kap. 7, 20–21 §§ require a documented non-destructive test or pressure test after a substantial repair/alteration of a class A/B pressure-bearing device, and forbid the employer from re-pressurising it until an accredited inspection body's revisionskontroll (revision inspection) confirms conformity, but set no fixed jurisdiction-wide numeric advance-notice-days count this actor could independently verify -- this actor does not invent one. Like USA/DEU, Sweden's duty runs through an accredited third-party inspection body rather than a direct pre-repair filing with Arbetsmiljöverket itself (unlike JPN's ボイラー変更届 to the Labour Standards Inspection Office) -- this actor does not force a notification-to-authority element where the verified source does not have one."}})
 
 (defn spec-basis
   "The jurisdiction's requirement map, or nil -- nil means NO spec-basis,
@@ -152,7 +202,7 @@
   deliberately (the same shape `installation.facts/notification-lead-
   insufficient?` established):
     true/false   -- never produced by this catalog (see ns docstring):
-                    none of JPN/USA/DEU carries a `:quantitative`
+                    none of JPN/USA/DEU/SWE carries a `:quantitative`
                     threshold-model for the post-repair inspection-
                     before-return-to-service duty.
     :qualitative -- a jurisdiction with NO fixed numeric lead-time (every
