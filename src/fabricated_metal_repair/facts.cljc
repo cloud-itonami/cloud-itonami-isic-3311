@@ -170,7 +170,52 @@
           :repair-safety-provenance "https://www.av.se/globalassets/filer/publikationer/foreskrifter/konsoliderade-foreskrifter/arbetsutrustning-och-personlig-skyddsutrustning-saker-anvandning-afs2023-11-konsoliderad.pdf"
           :threshold-model :qualitative
           :notification-lead-days nil
-          :threshold-note "AFS 2023:11 9 kap. 40–42 §§ and 10 kap. 7, 20–21 §§ require a documented non-destructive test or pressure test after a substantial repair/alteration of a class A/B pressure-bearing device, and forbid the employer from re-pressurising it until an accredited inspection body's revisionskontroll (revision inspection) confirms conformity, but set no fixed jurisdiction-wide numeric advance-notice-days count this actor could independently verify -- this actor does not invent one. Like USA/DEU, Sweden's duty runs through an accredited third-party inspection body rather than a direct pre-repair filing with Arbetsmiljöverket itself (unlike JPN's ボイラー変更届 to the Labour Standards Inspection Office) -- this actor does not force a notification-to-authority element where the verified source does not have one."}})
+          :threshold-note "AFS 2023:11 9 kap. 40–42 §§ and 10 kap. 7, 20–21 §§ require a documented non-destructive test or pressure test after a substantial repair/alteration of a class A/B pressure-bearing device, and forbid the employer from re-pressurising it until an accredited inspection body's revisionskontroll (revision inspection) confirms conformity, but set no fixed jurisdiction-wide numeric advance-notice-days count this actor could independently verify -- this actor does not invent one. Like USA/DEU, Sweden's duty runs through an accredited third-party inspection body rather than a direct pre-repair filing with Arbetsmiljöverket itself (unlike JPN's ボイラー変更届 to the Labour Standards Inspection Office) -- this actor does not force a notification-to-authority element where the verified source does not have one."}
+   ;; GBR added this session (2026-07-23), citations independently
+   ;; fetched+read directly from legislation.gov.uk (HTTP 200, no
+   ;; bot-detection challenge). This actor first confirmed the Pressure
+   ;; Systems Safety Regulations 2000 (SI 2000/128) are the CURRENT
+   ;; instrument -- not the earlier, revoked Pressure Systems and
+   ;; Transportable Gas Containers Regulations 1989 a naive search
+   ;; would surface -- the same "confirm current, not superseded"
+   ;; discipline this catalog's own SWE entry already established for
+   ;; AFS 2023:11 vs the repealed AFS 2017:3. Confirmed verbatim on the
+   ;; Regulations' own Citation and commencement clause: "These
+   ;; Regulations may be cited as the Pressure Systems Safety
+   ;; Regulations 2000 and shall come into force on 21st February
+   ;; 2000." Confirmed the Regulations' own Interpretation section
+   ;; defines "the Executive" as "the Health and Safety Executive".
+   ;; Confirmed regulation 4(2) verbatim: "The employer of a person who
+   ;; modifies or repairs any pressure system shall provide sufficient
+   ;; written information concerning the modification or repair as may
+   ;; reasonably foreseeably be needed to enable the provisions of
+   ;; these Regulations to be complied with." Confirmed regulation 8(1)
+   ;; (Written scheme of examination) verbatim: "The user of an
+   ;; installed system and owner of a mobile system shall not operate
+   ;; the system or allow it to be operated unless he has a written
+   ;; scheme for the periodic examination, by a competent person, of
+   ;; the following parts of the system..." Confirmed regulation 9(1)(a)
+   ;; (Examination in accordance with the written scheme) verbatim:
+   ;; "the user of an installed system and the owner of a mobile system
+   ;; shall ... ensure that those parts of the pressure system included
+   ;; in the scheme of examination are examined by a competent person
+   ;; within the intervals specified in the scheme...". Like USA's NBIC
+   ;; and Sweden's AFS 2023:11, and UNLIKE Japan's ボイラー変更届 filed
+   ;; with the Labour Standards Inspection Office, the UK's duty runs
+   ;; through a written scheme examined by a "competent person" rather
+   ;; than a pre-repair filing with the Executive itself -- this actor
+   ;; does not force a notification-to-authority element onto a
+   ;; jurisdiction whose verified source does not have one. The
+   ;; examination interval is fixed by the scheme itself (system-by-
+   ;; system), not by a jurisdiction-wide numeric day-count the
+   ;; Regulations themselves specify -- this actor does not invent one.
+   "GBR" {:name "United Kingdom"
+          :owner-authority "Health and Safety Executive (HSE) -- \"the Executive\", per the Regulations' own Interpretation section"
+          :repair-safety-basis "Pressure Systems Safety Regulations 2000 (SI 2000/128), regulation 4(2): the employer of a person who modifies or repairs any pressure system shall provide sufficient written information concerning the modification or repair as may reasonably foreseeably be needed to enable the provisions of these Regulations to be complied with; regulation 8(1) (Written scheme of examination): the user/owner shall not operate the system unless a written scheme exists for the periodic examination, by a competent person, of protective devices, pressure vessels/pipelines, and pipework where a defect may give rise to danger; regulation 9(1)(a) (Examination in accordance with the written scheme): those parts must be examined by a competent person within the intervals specified in the scheme"
+          :repair-safety-provenance "https://www.legislation.gov.uk/uksi/2000/128/made"
+          :threshold-model :qualitative
+          :notification-lead-days nil
+          :threshold-note "The Pressure Systems Safety Regulations 2000 require a written scheme of examination (reg. 8) and periodic examination by a competent person within scheme-specified intervals (reg. 9), plus written information on any repair/modification (reg. 4(2)), but set no fixed jurisdiction-wide numeric advance-notice-days count this actor could independently verify -- the interval is scheme-specific, not statute-specific. This actor does not invent a numeric lead-time here."}})
 
 (defn spec-basis
   "The jurisdiction's requirement map, or nil -- nil means NO spec-basis,

@@ -22,6 +22,12 @@
   (is (= :qualitative (:threshold-model (facts/spec-basis "SWE"))))
   (is (nil? (:notification-lead-days (facts/spec-basis "SWE")))))
 
+(deftest gbr-is-honestly-qualitative-not-fabricated
+  (is (some? (facts/spec-basis "GBR")))
+  (is (string? (:repair-safety-provenance (facts/spec-basis "GBR"))))
+  (is (= :qualitative (:threshold-model (facts/spec-basis "GBR"))))
+  (is (nil? (:notification-lead-days (facts/spec-basis "GBR")))))
+
 (deftest unknown-jurisdiction-has-no-fabricated-spec-basis
   (is (nil? (facts/spec-basis "ATL"))))
 
@@ -52,6 +58,10 @@
 (deftest swe-never-gets-a-fabricated-true-false
   (is (= :qualitative (facts/notification-lead-insufficient? "SWE" {})))
   (is (= :qualitative (facts/notification-lead-insufficient? "SWE" {:anything 0}))))
+
+(deftest gbr-never-gets-a-fabricated-true-false
+  (is (= :qualitative (facts/notification-lead-insufficient? "GBR" {})))
+  (is (= :qualitative (facts/notification-lead-insufficient? "GBR" {:anything 0}))))
 
 (deftest unknown-jurisdiction-returns-nil-not-a-guess
   (is (nil? (facts/notification-lead-insufficient? "ATL" {:anything 100}))))
@@ -92,6 +102,17 @@
     (is (re-find #"oförstörande provning" (:repair-safety-basis sb))
         "cites the non-destructive-examination-or-pressure-test requirement (9 kap. 41 §)")
     (is (re-find #"av\.se" (:repair-safety-provenance sb)))))
+
+(deftest gbr-cites-real-pressure-systems-safety-regulations-2000-provision
+  (let [sb (facts/spec-basis "GBR")]
+    (is (re-find #"Pressure Systems Safety Regulations 2000" (:repair-safety-basis sb)))
+    (is (re-find #"regulation 8\(1\)" (:repair-safety-basis sb))
+        "cites the written-scheme-of-examination duty")
+    (is (re-find #"regulation 9\(1\)\(a\)" (:repair-safety-basis sb))
+        "cites the examination-in-accordance-with-the-scheme duty")
+    (is (re-find #"regulation 4\(2\)" (:repair-safety-basis sb))
+        "cites the repair/modification written-information duty")
+    (is (re-find #"legislation\.gov\.uk" (:repair-safety-provenance sb)))))
 
 (deftest uncovered-jurisdiction-has-no-fabricated-catalog-entry
   (is (nil? (facts/spec-basis "ATL"))))
