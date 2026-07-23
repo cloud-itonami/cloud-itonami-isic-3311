@@ -51,10 +51,10 @@
  unconditional `high-stakes` member in `fabricated-metal-repair.governor`
  -- see that ns docstring 'Actuation' section for the full rationale.
 
- Per-jurisdiction (JPN/USA/DEU) post-repair (weld-repair on a
+ Per-jurisdiction (JPN/USA/DEU/SWE) post-repair (weld-repair on a
  pressure-bearing/structural part) inspection-before-return-to-service
  legal-basis catalog (`fabricated-metal-repair.facts`) with real official
- sources -- all THREE seeded jurisdictions are honestly `:qualitative`
+ sources -- all FOUR seeded jurisdictions are honestly `:qualitative`
  here (a procedural change-notification-plus-inspection /
  pressure-test-or-NDE / qualified-inspector duty before a repaired
  pressure vessel, boiler or structural-load-bearing member returns to
@@ -62,7 +62,7 @@
  honest-coverage convention `installation.facts`/`demolition.facts`/
  `construction.facts`/`electrical-equipment-repair.facts`/`other-
  equipment-repair.facts` establish. This actor does not invent a numeric
- lead-time count where none of its three researched jurisdictions'
+ lead-time count where none of its four researched jurisdictions'
  fabricated-metal-product repair law gives one for the repair itself.
  This build ships NO JVM-only interop anywhere in `src/` (no real
  Resend/Twilio transports -- `fabricated-metal-repair.notify` ships only

@@ -93,8 +93,8 @@ repair-shop diagnostic/repair/testing coordination as described above.
 
 **Legal basis is data, not code** -- `src/fabricated_metal_repair/facts.cljc`'s
 `catalog` is the per-jurisdiction EDN source-of-truth the governor checks
-every `:schedule-repair-operation` proposal against (JPN/USA/DEU seeded,
-the same honest-coverage convention `installation.facts`/`demolition.
+every `:schedule-repair-operation` proposal against (JPN/USA/DEU/SWE
+seeded, the same honest-coverage convention `installation.facts`/`demolition.
 facts`/`construction.facts`/`electrical-equipment-repair.facts`/`other-
 equipment-repair.facts` use; DEU stands in for the EU):
 
@@ -103,8 +103,9 @@ equipment-repair.facts` use; DEU stands in for the EU):
 | 🇯🇵 Japan | ボイラー及び圧力容器安全規則（昭和47年労働省令第33号）第41条（ボイラー変更届）・第42条（変更検査 -- 胴、ドーム、炉筒、火室、鏡板、天井板、管板、管寄せ又はステー等の構造上重要な部分を溶接により修繕しようとするときは所轄労働基準監督署長にボイラー変更届を提出し、変更検査に合格した後でなければ変更後のボイラーを使用してはならない義務。第一種圧力容器についても第76条・第77条に同様の義務） -- [e-Gov](https://laws.e-gov.go.jp/law/347M50002000033) |
 | 🇺🇸 USA | National Board Inspection Code (NBIC, ANSI/NB-23, published by the National Board of Boiler and Pressure Vessel Inspectors) Part 3 (Repairs and Alterations): 3.2.2(e) requires a repaired pressure-retaining part to receive a pressure test as required by the original code of construction; 4.4.2(c) permits NDE in lieu of a hydrostatic test for an alteration, subject to Inspector/jurisdiction concurrence. Most U.S. state boiler-and-pressure-vessel-safety laws adopt the NBIC as the legally binding repair code -- [nationalboard.org](https://www.nationalboard.org/index.aspx?pageID=164&ID=440) |
 | 🇪🇺 EU (DEU proxy) | Betriebssicherheitsverordnung (BetrSichV) Anhang 2 (zu den §§15, 16) Abschnitt 4, Nummer 4.2 (Prüfungen vor Inbetriebnahme und nach prüfpflichtigen Änderungen -- the inspection following a test-obligatory change, e.g. a structural weld repair of a pressure-bearing wall, must confirm the equipment was changed in conformity and functions safely before returning to operation), grounded in Directive 2009/104/EC (minimum safety and health requirements for the use of work equipment by workers) -- [gesetze-im-internet.de](https://www.gesetze-im-internet.de/betrsichv_2015/anhang_2.html) |
+| 🇸🇪 Sweden | Arbetsmiljöverkets föreskrifter (AFS 2023:11) om arbetsutrustning och personlig skyddsutrustning – säker användning (in force since 1 January 2025, amended by AFS 2024:4; supersedes the repealed AFS 2017:3 om användning och kontroll av trycksatta anordningar), 9 kap. 40–42 §§ (a substantial repair/alteration of a class A/B pressurised device requires documentation showing a non-destructive examination with an approved result and a pressure test after the measure) together with 10 kap. 7, 20 and 21 §§ (the employer may not pressurise a class A/B device unless an accredited kontrollorgan has, at a revisionskontroll triggered by the repair/alteration, assessed that the device is still fit for purpose and the repair documentation is in order) -- [av.se (consolidated AFS 2023:11 PDF)](https://www.av.se/globalassets/filer/publikationer/foreskrifter/konsoliderade-foreskrifter/arbetsutrustning-och-personlig-skyddsutrustning-saker-anvandning-afs2023-11-konsoliderad.pdf) |
 
-All three seeded jurisdictions are honestly `:qualitative` here -- every
+All four seeded jurisdictions are honestly `:qualitative` here -- every
 source is a PROCEDURAL requirement (notify/inspect a repaired structural
 or pressure-bearing part before it returns to service, with a pressure
 test or an equivalent non-destructive test) with no fixed numeric

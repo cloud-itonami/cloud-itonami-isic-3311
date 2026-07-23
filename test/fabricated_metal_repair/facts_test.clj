@@ -16,6 +16,12 @@
   (is (= :qualitative (:threshold-model (facts/spec-basis "DEU"))))
   (is (nil? (:notification-lead-days (facts/spec-basis "DEU")))))
 
+(deftest swe-is-honestly-qualitative-not-fabricated
+  (is (some? (facts/spec-basis "SWE")))
+  (is (string? (:repair-safety-provenance (facts/spec-basis "SWE"))))
+  (is (= :qualitative (:threshold-model (facts/spec-basis "SWE"))))
+  (is (nil? (:notification-lead-days (facts/spec-basis "SWE")))))
+
 (deftest unknown-jurisdiction-has-no-fabricated-spec-basis
   (is (nil? (facts/spec-basis "ATL"))))
 
@@ -42,6 +48,10 @@
 (deftest deu-never-gets-a-fabricated-true-false
   (is (= :qualitative (facts/notification-lead-insufficient? "DEU" {})))
   (is (= :qualitative (facts/notification-lead-insufficient? "DEU" {:anything 0}))))
+
+(deftest swe-never-gets-a-fabricated-true-false
+  (is (= :qualitative (facts/notification-lead-insufficient? "SWE" {})))
+  (is (= :qualitative (facts/notification-lead-insufficient? "SWE" {:anything 0}))))
 
 (deftest unknown-jurisdiction-returns-nil-not-a-guess
   (is (nil? (facts/notification-lead-insufficient? "ATL" {:anything 100}))))
@@ -72,6 +82,16 @@
     (is (re-find #"gesetze-im-internet\.de" (:repair-safety-provenance sb)))
     (is (re-find #"2009/104" (:repair-safety-basis sb))
         "cites the correct EU use-of-work-equipment directive backing the BetrSichV inspection duty")))
+
+(deftest swe-cites-real-afs-2023-11-provision
+  (let [sb (facts/spec-basis "SWE")]
+    (is (re-find #"AFS 2023:11" (:repair-safety-basis sb)))
+    (is (re-find #"9 kap\." (:repair-safety-basis sb)))
+    (is (re-find #"revisionskontroll" (:repair-safety-basis sb))
+        "cites the revision-inspection duty (10 kap. 20-21 §§) triggered by a substantial repair/alteration")
+    (is (re-find #"oförstörande provning" (:repair-safety-basis sb))
+        "cites the non-destructive-examination-or-pressure-test requirement (9 kap. 41 §)")
+    (is (re-find #"av\.se" (:repair-safety-provenance sb)))))
 
 (deftest uncovered-jurisdiction-has-no-fabricated-catalog-entry
   (is (nil? (facts/spec-basis "ATL"))))
