@@ -1,6 +1,6 @@
 (ns fabricated-metal-repair.render-html
   "Build-time HTML renderer. Drives the REAL actor stack deterministically."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [fabricated-metal-repair.store :as store]
             [fabricated-metal-repair.operation :as op]
             [langgraph.graph :as g]))
