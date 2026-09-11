@@ -1,0 +1,21 @@
+{:format :kotoba.cljk-origin/v1
+ :renamed-on "2026-09-11"
+ :decision "adr-2609111500-cljk-rename-all-clojure-source (com-junkawasaki/root 90-docs/adr; owner instruction 2026-09-11)"
+ :rule "value = the extension the file had before the rename. A path ending in .clj.cljk or .cljs.cljk kept it in the name because both platform files existed (or the plain target was taken)."
+ :origins
+ {"src/fabricated_metal_repair/advisor.cljk" ".cljc"
+  "src/fabricated_metal_repair/facts.cljk" ".cljc"
+  "src/fabricated_metal_repair/governor.cljk" ".cljc"
+  "src/fabricated_metal_repair/notify.cljk" ".cljc"
+  "src/fabricated_metal_repair/operation.cljk" ".cljc"
+  "src/fabricated_metal_repair/phase.cljk" ".cljc"
+  "src/fabricated_metal_repair/registry.cljk" ".cljc"
+  "src/fabricated_metal_repair/render_html.cljk" ".clj"
+  "src/fabricated_metal_repair/sim.cljk" ".cljc"
+  "src/fabricated_metal_repair/store.cljk" ".cljc"
+  "test/fabricated_metal_repair/facts_test.cljk" ".clj"
+  "test/fabricated_metal_repair/governor_contract_test.cljk" ".clj"
+  "test/fabricated_metal_repair/notify_test.cljk" ".clj"
+  "test/fabricated_metal_repair/phase_test.cljk" ".clj"
+  "test/fabricated_metal_repair/registry_test.cljk" ".clj"
+  "test/fabricated_metal_repair/store_contract_test.cljk" ".clj"}}
