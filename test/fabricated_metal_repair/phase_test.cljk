@@ -8,7 +8,7 @@
   deliberate DIFFERENCE from `cloud-itonami-isic-3320`'s `:schedule-
   installation-operation` (which is never auto-eligible), matching the
   shape `cloud-itonami-isic-3314`/`cloud-itonami-isic-3319` use."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [fabricated-metal-repair.phase :as phase]))
 
 (deftest flag-safety-concern-never-auto-at-any-phase
