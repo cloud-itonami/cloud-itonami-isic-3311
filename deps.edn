@@ -16,7 +16,7 @@
  ;; anywhere in `src/` (no `java.net.http`, no real Resend/Twilio
  ;; transports in `fabricated-metal-repair.notify` -- only the portable
  ;; mock notifier) per this workspace's cljs-first `.cljc` runtime-priority
- ;; rule (CLAUDE.md `.cljc`/`.kotoba` runtime priority section) -- a real
+ ;; rule (AGENTS.md `.cljc`/`.kotoba` runtime priority section) -- a real
  ;; transport can be added later via a portable (cljs/nbb) HTTP client
  ;; without touching this namespace's protocol shape.
  :deps {
